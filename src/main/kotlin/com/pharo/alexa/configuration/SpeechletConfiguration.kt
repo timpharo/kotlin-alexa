@@ -1,4 +1,4 @@
-package com.pharo.alexa
+package com.pharo.alexa.configuration
 
 import com.amazon.speech.speechlet.servlet.SpeechletServlet
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,7 +9,7 @@ import com.pharo.alexa.speechlet.AlexaSpeechlet
 
 
 @Configuration
-class Config {
+class SpeechletConfiguration {
 
     @Autowired
     lateinit var alexaSpeechlet: AlexaSpeechlet
