@@ -4,19 +4,19 @@ import com.amazon.speech.speechlet.*
 import com.amazon.speech.ui.PlainTextOutputSpeech
 import com.amazon.speech.ui.SimpleCard
 import org.springframework.stereotype.Component
+import redis.clients.jedis.Jedis
 import java.time.Duration
 import java.time.LocalDate
 import java.time.temporal.WeekFields
 import java.util.*
 
 @Component
-class AlexaSpeechlet : Speechlet {
+class AlexaSpeechlet(private val jedis: Jedis) : Speechlet {
 
     @Throws(SpeechletException::class)
     override fun onIntent(request: IntentRequest, session: Session): SpeechletResponse {
         val intent = request.intent
         val intentName = intent?.name
-
         when(intentName){
             "BinColourIntent" -> return binColourResponse()
             "BirthdayIntent" -> return birthdayResponse()
@@ -37,6 +37,8 @@ class AlexaSpeechlet : Speechlet {
 
     }
 }
+
+
 
 fun birthdayResponse(): SpeechletResponse {
     val speechText = speechForBirthday()
