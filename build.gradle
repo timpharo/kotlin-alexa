@@ -42,8 +42,8 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
     compile('com.amazon.alexa:alexa-skills-kit:1.8+')
-
-    compile 'org.springframework.data:spring-data-redis:1.8.9.RELEASE'
+    compile ("org.springframework.data:spring-data-redis")
+    compile ("redis.clients:jedis:2.9.0")
 
     runtime('org.springframework.boot:spring-boot-devtools')
 

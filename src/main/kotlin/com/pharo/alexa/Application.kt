@@ -7,6 +7,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 class Application
 
 fun main(args: Array<String>) {
-    println("Redis URL: ${System.getenv("REDIS_URL")}")
     SpringApplication.run(Application::class.java, *args)
 }
