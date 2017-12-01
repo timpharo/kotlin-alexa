@@ -1,4 +1,4 @@
-package uk.co.autotrader.advertbackend
+package com.pharo.alexa
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication

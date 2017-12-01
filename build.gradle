@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.1.60'
+        kotlinVersion = '1.1.61'
         springBootVersion = '1.5.7.RELEASE'
     }
     repositories {
@@ -19,6 +19,10 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: "io.spring.dependency-management"
 
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
 group = 'uk.co.autotrader.advertbackend'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -34,20 +38,38 @@ repositories {
     mavenCentral()
 }
 
+configurations.all {
+
+
+}
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-web') {
-        exclude module: "spring-boot-starter-tomcat"
-    }
-    compile "org.springframework.boot:spring-boot-starter-jetty"
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-jetty')
 
     compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
+    compile('com.amazon.alexa:alexa-skills-kit:1.8+')
+
     runtime('org.springframework.boot:spring-boot-devtools')
-    runtime('com.h2database:h2')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+configurations.all {
+    exclude module: 'slf4j-log4j12'
+    exclude module: 'jms'
+    exclude module: 'jmxtools'
+    exclude module: 'jmxri'
+}
+
+shadowJar {
+    baseName = "${rootProject.name}"
+    classifier = null
+    version = null
+    zip64 = true
+    manifest {
+        attributes 'Main-Class': 'com.pharo.alexa.Application'
+    }
 }
