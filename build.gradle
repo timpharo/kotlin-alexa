@@ -19,10 +19,6 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: "io.spring.dependency-management"
 
-plugins {
-    id 'com.github.johnrengelman.shadow' version '2.0.1'
-}
-
 group = 'uk.co.autotrader.advertbackend'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -62,14 +58,4 @@ configurations.all {
     exclude module: 'jms'
     exclude module: 'jmxtools'
     exclude module: 'jmxri'
-}
-
-shadowJar {
-    baseName = "${rootProject.name}"
-    classifier = null
-    version = null
-    zip64 = true
-    manifest {
-        attributes 'Main-Class': 'com.pharo.alexa.Application'
-    }
 }
