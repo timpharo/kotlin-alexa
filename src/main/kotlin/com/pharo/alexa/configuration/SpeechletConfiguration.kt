@@ -16,7 +16,6 @@ class SpeechletConfiguration {
 
     @Bean
     fun registerServlet(): ServletRegistrationBean {
-
         val speechletServlet = SpeechletServlet()
         speechletServlet.speechlet = alexaSpeechlet
 
