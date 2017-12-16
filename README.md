@@ -1,6 +1,3 @@
-Advert-Backend in Kotlin 
+Alexa skill in Kotlin 
 ========================
-This is a workshop adaptation of [Todo-Backend](http://todobackend.com/) and the test for this can be found 
-[here](https://github.atcloud.io/tim-pharo/advert-backend-js-spec).
-
-This application uses Spring Boot and an embedded H2 database
+A alexa skill group in Kotlin. Currently configured to be deploy to Heroku as one of the requirements for an alexa skill to function is that it is served on https.  Also a Redis is currently being integrated into one of the skills.
