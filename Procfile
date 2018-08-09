@@ -1,0 +1,1 @@
+web: java -jar build/libs/kotlin-alexa-0.1.jar
